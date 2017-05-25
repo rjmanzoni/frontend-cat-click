@@ -8,7 +8,7 @@
 			}
 			.tet{
 				display: inline-block;
-				width: 49%;
+				width: 50%;
 			}
 
 		</style>
@@ -18,24 +18,34 @@
 		<div align="center">
 			<h1>Cat Click</h1>
 		</div>
-		<div id="cat" align="center">
-			<img src="images/cat.jpg">
+		<div id='cats'>
+			
 		</div>
-		<div>
-			<div class="tet" align="right"><h3 >Clicks:</h3></div>	
-			<div class="tet" ><h3 id="counter">0</h3></div>
-		</div>
+		
 	</body>
 	<script type="text/javascript">
 
-		var x = 0;
-		
-		var elem = document.getElementById('cat');
-		elem.addEventListener('click', function(){
-		  var c = document.getElementById('counter');
-		  c.innerHTML = x++;
+		HTMLCat = '<div class="tet"><div align="center"><h3>$catName</h3></div><img id="$catId" width=100% src="images/$catImage"><div><div class="tet" align="right"><h3 >Clicks:</h3></div><div class="tet" ><h3 id="$counter">0</h3></div></div></div>'
 
-		}, false);
+		var catI = "I";
+		var catMe = "Me";
+		var cats = ["I", "Me"];
+
+		document.getElementById('cats').insertAdjacentHTML('beforeend',HTMLCat.replace('$catName',cats[0]).replace('$catId',cats[0]).replace('$catImage','cat.jpg').replace('$counter','counter'+cats[0]));
+		document.getElementById('cats').insertAdjacentHTML('beforeend',HTMLCat.replace('$catName',cats[1]).replace('$catId',cats[1]).replace('$catImage','cat2.jpg').replace('$counter','counter'+cats[1]));
+
+		for (var i = 0; i < cats.length; i++) {
+			var elem = document.getElementById(cats[i]);
+			
+			elem.addEventListener('click',f(i), false);
+		}
+
+		function f(value){
+			return function(){
+				var c = document.getElementById('counter'+cats[value]);
+		 		c.innerHTML = parseInt(c.innerHTML)+1;
+			}
+		}
 	</script>
 </html>
 

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style type="text/css">
+			body{
+				box-sizing: border-box;
+
+			}
+			.tet{
+				display: inline-block;
+				width: 49%;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div align="center">
+			<h1>Cat Click</h1>
+		</div>
+		<div id="cat" align="center">
+			<img src="images/cat.jpg">
+		</div>
+		<div>
+			<div class="tet" align="right"><h3 >Clicks:</h3></div>	
+			<div class="tet" ><h3 id="counter">0</h3></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+
+		var x = 0;
+		
+		var elem = document.getElementById('cat');
+		elem.addEventListener('click', function(){
+		  var c = document.getElementById('counter');
+		  c.innerHTML = x++;
+
+		}, false);
+	</script>
+</html>
+
